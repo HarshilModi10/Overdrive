@@ -11,6 +11,7 @@ public class TileManager : MonoBehaviour
     private float tileLength = 10.0f;
     private float safeZone = 15.0f;
     private int amnTilesOnScreen = 7;
+    private int lastPrefabIndex = 0;
 
     private List<GameObject> activeTiles;
 
@@ -21,7 +22,15 @@ public class TileManager : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i =0; i< amnTilesOnScreen; i++)
         {
-            SpawnTile();
+            if (i < 4)//spawn tile with no obstacles initially (gives players a chance to react)
+            {
+                SpawnTile(0);
+            }
+            else
+            {
+                SpawnTile();
+            }
+          
             
         }
         
@@ -40,7 +49,14 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabIndex = -1)
     {
         GameObject go;
-        go = Instantiate(tilePrefabs[0]) as GameObject;
+        if(prefabIndex == -1)
+        {
+            go = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject; //instantiate to random tile
+        }
+        else
+        {
+            go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
+        }
         go.transform.SetParent(transform);
         go.transform.position = Vector3.forward * spawnZ;
         spawnZ += tileLength;
@@ -51,5 +67,21 @@ public class TileManager : MonoBehaviour
     {
         Destroy(activeTiles[0]);
         activeTiles.RemoveAt(0);
+    }
+
+    private int RandomPrefabIndex()
+    {
+        if(tilePrefabs.Length <= 1) //if only 1 prefab within our list of game objects
+        {
+            return 0;
+        }
+
+        int randomIndex = lastPrefabIndex;
+        while(randomIndex == lastPrefabIndex)
+        {
+            randomIndex = Random.Range(0, tilePrefabs.Length);//generate a random index based on our list of game objects
+        }
+        lastPrefabIndex = randomIndex;
+        return randomIndex;
     }
 }
