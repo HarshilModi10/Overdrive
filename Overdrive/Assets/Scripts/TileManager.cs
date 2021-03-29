@@ -12,7 +12,7 @@ public class TileManager : MonoBehaviour
     private float safeZone = 15.0f;
     private int amnTilesOnScreen = 7;
     private int lastPrefabIndex = 0;
-
+    
     private List<GameObject> activeTiles;
 
     // Start is called before the first frame update
