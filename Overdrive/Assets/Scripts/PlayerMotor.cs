@@ -8,6 +8,7 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 moveVector;
     private float speed = 5.0f;
     private float animationDuration = 3.0f; //animation duration at the start of the game
+    private float startTime;
 
     private bool isDead = false;
 
@@ -15,6 +16,8 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Time.timeScale = 1; //unpauses the time
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class PlayerMotor : MonoBehaviour
         {
             return;//exit when dead
         }
-        if(Time.time < animationDuration)//if time right now below 3 seconds
+        if(Time.time - startTime < animationDuration)//if time right now below 3 seconds (need to minus startTime because playing again doesnt reset the time)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;//player cant move
@@ -51,7 +54,9 @@ public class PlayerMotor : MonoBehaviour
     {
         if(hit.point.z > transform.position.z + controller.radius) //the point of z-axis of player passes z-axis of something
         {
+            Time.timeScale = 0; //pauses the time
             Death();
+            
         }
     }
 

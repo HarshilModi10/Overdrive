@@ -14,6 +14,8 @@ public class Score : MonoBehaviour
     private bool isDead = false;
 
     public Text scoreText;
+    public DeathMenu deathMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,5 +53,6 @@ public class Score : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+        deathMenu.ToggleEndMenu(score);//turn on death menu
     }
 }
