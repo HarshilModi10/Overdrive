@@ -21,4 +21,19 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Game");//load Game scene
     }
+
+    public void ToPlayerProfile()
+    {
+        SceneManager.LoadScene("PlayerProfile");//load PlayerProfile scene
+    }
+
+    public void ToShop()
+    {
+        SceneManager.LoadScene("Shop");//load Shop scene
+    }
+
+    public void ToHelp()
+    {
+        SceneManager.LoadScene("Help");//load Help scene
+    }
 }
