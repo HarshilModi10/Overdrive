@@ -53,6 +53,23 @@ public class Score : MonoBehaviour
     public void OnDeath()
     {
         isDead = true;
+        float availableOdCoins, totalOdCoinsEarned, totalStagesPlayed;
+        totalOdCoinsEarned = totalStagesPlayed = availableOdCoins = 0;
+        float sumOfGameDurations = 0;
+
+        try{
+            availableOdCoins = PlayerPrefs.GetFloat("availableOdCoins");
+            totalOdCoinsEarned = PlayerPrefs.GetFloat("totalOdCoinsEarned");
+            totalStagesPlayed = PlayerPrefs.GetFloat("totalStagesPlayed");
+            sumOfGameDurations = PlayerPrefs.GetFloat("sumOfGameDurations");
+        } catch {}
+
+        float earnedCoins = (int) score / 2;
+
+        PlayerPrefs.SetFloat("availableOdCoins", availableOdCoins + earnedCoins);
+        PlayerPrefs.SetFloat("totalOdCoinsEarned", totalOdCoinsEarned + earnedCoins);
+        PlayerPrefs.SetFloat("totalStagesPlayed", totalStagesPlayed + 1);
+        PlayerPrefs.SetFloat("sumOfGameDurations", sumOfGameDurations + score);
         deathMenu.ToggleEndMenu(score);//turn on death menu
     }
 }
