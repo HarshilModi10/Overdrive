@@ -17,9 +17,9 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void ToGame()
+    public void ToStartGame()
     {
-        SceneManager.LoadScene("Game");//load Game scene
+        SceneManager.LoadScene("StartGame");//load Game scene
     }
 
     public void ToPlayerProfile()
@@ -35,5 +35,9 @@ public class MainMenu : MonoBehaviour
     public void ToHelp()
     {
         SceneManager.LoadScene("Help");//load Help scene
+    }
+
+    public List<CosmeticItem> getPurchasedCosmetics(){
+        return getPurchasedCosmetics();
     }
 }

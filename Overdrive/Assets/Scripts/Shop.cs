@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
+
         
     }
 
@@ -20,5 +22,9 @@ public class Shop : MonoBehaviour
     public void ToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public List<CosmeticItem> getPurchasedCosmetics(){
+        return getPurchasedCosmetics();
     }
 }
