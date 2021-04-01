@@ -37,7 +37,4 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Help");//load Help scene
     }
 
-    public List<CosmeticItem> getPurchasedCosmetics(){
-        return getPurchasedCosmetics();
-    }
 }

@@ -12,12 +12,21 @@ public class PlayerMotor : MonoBehaviour
 
     private bool isDead = false;
 
+    private Mesh character;
+
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Time.timeScale = 1; //unpauses the time
         startTime = Time.time;
+
+        if (PlayerPrefs.GetInt("selectedCosmetic") == 0){
+            character = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+            player.GetComponent<MeshFilter>().mesh = character;
+        }
     }
 
     // Update is called once per frame
