@@ -12,12 +12,19 @@ public class PlayerProfile : MonoBehaviour
     public Text avgStageDuration;
     void Start()
     {
-   
-        availableOdCoinsText.text = "Available OD Coins: " + PlayerPrefs.GetFloat("availableOdCoins");
-        avgOdCoinsEarned.text = "Average  OD Coins Earned Per Game : " + PlayerPrefs.GetFloat("totalOdCoinsEarned") / PlayerPrefs.GetFloat("totalStagesPlayed");
-        avgStageDuration.text = "Average  Duration Per Game " + (int) (PlayerPrefs.GetFloat("sumOfGameDurations") / PlayerPrefs.GetFloat("totalStagesPlayed"));
-    
-        
+        try
+        {
+            availableOdCoinsText.text = "Available OD Coins: " + PlayerPrefs.GetFloat("availableOdCoins");
+            avgOdCoinsEarned.text = "Average  OD Coins Earned Per Game : " + PlayerPrefs.GetFloat("totalOdCoinsEarned") / PlayerPrefs.GetFloat("totalStagesPlayed");
+            avgStageDuration.text = "Average  Duration Per Game " + (int)(PlayerPrefs.GetFloat("sumOfGameDurations") / PlayerPrefs.GetFloat("totalStagesPlayed"));
+        } catch
+        {
+            PlayerPrefs.SetFloat("availableOdCoins", 0);
+            PlayerPrefs.SetFloat("totalOdCoinsEarned", 0);
+            PlayerPrefs.SetFloat("totalStagesPlayed", 0);
+            PlayerPrefs.SetFloat("sumOfGameDurations", 0);
+        }
+        print(PlayerPrefs.GetFloat("availableOdCoins"));
     }
 
     // Update is called once per frame

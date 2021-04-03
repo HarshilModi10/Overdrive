@@ -65,7 +65,6 @@ public class Score : MonoBehaviour
         } catch {}
 
         float earnedCoins = (int) score / 2;
-
         PlayerPrefs.SetFloat("availableOdCoins", availableOdCoins + earnedCoins);
         PlayerPrefs.SetFloat("totalOdCoinsEarned", totalOdCoinsEarned + earnedCoins);
         PlayerPrefs.SetFloat("totalStagesPlayed", totalStagesPlayed + 1);

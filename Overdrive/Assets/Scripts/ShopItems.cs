@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ShopItems : MonoBehaviour
 {
-    private List<CosmeticItem> purchasedCosmeticList;
-    private List<CosmeticItem> allCosmeticList;
+    private static List<CosmeticItem> purchasedCosmeticList;
+    private static List<CosmeticItem> allCosmeticList;
     // Start is called before the first frame update
     void Start()
     {
-        this.purchasedCosmeticList = new List<CosmeticItem>();
-        Mesh mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
-        CosmeticItem test = new CosmeticItem("item1",mesh, 1000);
-        this.purchasedCosmeticList.Add(test);
+        setUp();
     }
 
     // Update is called once per frame
@@ -21,9 +18,9 @@ public class ShopItems : MonoBehaviour
         
     }
 
-    public List<CosmeticItem> getPurchasedCosmetics(){
+    public static List<CosmeticItem> getPurchasedCosmetics(){
         //try{
-            return this.purchasedCosmeticList;
+            return purchasedCosmeticList;
         //}catch{
         //    return (this.purchasedCosmeticList.);
         //}
@@ -31,6 +28,15 @@ public class ShopItems : MonoBehaviour
     }
 
     public List<CosmeticItem> getAllCosmetics(){
-        return this.allCosmeticList;
+        return allCosmeticList;
+    }
+
+    public static void setUp()
+    {
+        purchasedCosmeticList = new List<CosmeticItem>();
+        Mesh mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
+        CosmeticItem test = new CosmeticItem("item1", mesh, 1000);
+        purchasedCosmeticList.Add(test);
+        print("TEST");
     }
 }

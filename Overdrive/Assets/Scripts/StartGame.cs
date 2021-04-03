@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static ShopItems;
 public class StartGame : MonoBehaviour
 {
 
@@ -11,15 +12,21 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        try{
+        if (ShopItems.getPurchasedCosmetics() == null)
+        {
+            ShopItems.setUp();
+        }
+        try
+        {
             int cosmeticItem_1 = PlayerPrefs.GetInt("cosmeticItem-1");
         } catch {
             PlayerPrefs.SetInt("cosmeticItem-1", 1);
             int cosmeticItem_1 = PlayerPrefs.GetInt("cosmeticItem-1");
         }
+        //SceneManager.LoadSceneAsync("Shop");
         //GameObject ShopObj = GameObject.FindGameObjectWithTag("Shop");
         //print(ShopObj.GetComponent<ShopItems>().getPurchasedCosmetics());
-        //this.purchasedCosmeticList = getPurchasedCosmetics();
+        print(ShopItems.getPurchasedCosmetics());
         //print(this.purchasedCosmeticList.indexOf(0));
     }
 
