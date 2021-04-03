@@ -8,23 +8,36 @@ public class PlayerProfile : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text availableOdCoinsText;
-    public Text avgOdCoinsEarned;
-    public Text avgStageDuration;
+    public Text avgOdCoinsEarnedText;
+    public Text avgStageDurationText;
+
+    private float availableOdCoins = 0.0f;
+    private float totalOdCoinsEarned = 0.0f;
+    private float sumOfGameDurations = 0.0f;
+    private float totalStagesPlayed = 0.0f;
+    private float avgDuration = 0.0f;
+    private float avgOdCoinsEarned = 0.0f;
+
+
     void Start()
     {
+
         try
         {
-            availableOdCoinsText.text = "Available OD Coins: " + PlayerPrefs.GetFloat("availableOdCoins");
-            avgOdCoinsEarned.text = "Average  OD Coins Earned Per Game : " + PlayerPrefs.GetFloat("totalOdCoinsEarned") / PlayerPrefs.GetFloat("totalStagesPlayed");
-            avgStageDuration.text = "Average  Duration Per Game " + (int)(PlayerPrefs.GetFloat("sumOfGameDurations") / PlayerPrefs.GetFloat("totalStagesPlayed"));
-        } catch
-        {
-            PlayerPrefs.SetFloat("availableOdCoins", 0);
-            PlayerPrefs.SetFloat("totalOdCoinsEarned", 0);
-            PlayerPrefs.SetFloat("totalStagesPlayed", 0);
-            PlayerPrefs.SetFloat("sumOfGameDurations", 0);
+            availableOdCoins = PlayerPrefs.GetFloat("availableOdCoins");
+            totalOdCoinsEarned = PlayerPrefs.GetFloat("totalOdCoinsEarned");
+            sumOfGameDurations = PlayerPrefs.GetFloat("sumOfGameDurations");
+            totalStagesPlayed = PlayerPrefs.GetFloat("totalStagesPlayed");
+            avgDuration = (int) (sumOfGameDurations / totalStagesPlayed);
+            avgOdCoinsEarned = (int) (totalOdCoinsEarned / totalStagesPlayed);
+
+        } catch {
+             print("No PlayerPrepfs: PlayerProfile");
         }
-        print(PlayerPrefs.GetFloat("availableOdCoins"));
+
+        availableOdCoinsText.text = "Available OD Coins: " + availableOdCoins;
+        avgOdCoinsEarnedText.text = "Average  OD Coins Earned Per Game : " + avgOdCoinsEarned;
+        avgStageDurationText.text = "Average  Duration Per Game: " + avgDuration;
     }
 
     // Update is called once per frame
