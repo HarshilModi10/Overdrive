@@ -19,12 +19,7 @@ public class ShopItems : MonoBehaviour
     }
 
     public static List<CosmeticItem> getPurchasedCosmetics(){
-        //try{
-            return purchasedCosmeticList;
-        //}catch{
-        //    return (this.purchasedCosmeticList.);
-        //}
-        
+        return purchasedCosmeticList;
     }
 
     public List<CosmeticItem> getAllCosmetics(){
@@ -34,9 +29,21 @@ public class ShopItems : MonoBehaviour
     public static void setUp()
     {
         purchasedCosmeticList = new List<CosmeticItem>();
+        allCosmeticList = new List<CosmeticItem>();
+
         Mesh mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
-        CosmeticItem test = new CosmeticItem("item1", mesh, 1000);
-        purchasedCosmeticList.Add(test);
-        print("TEST");
+        CosmeticItem cube = new CosmeticItem("Cube", mesh, 1000);
+        purchasedCosmeticList.Add(cube);
+        allCosmeticList.Add(cube);
+
+        mesh = Resources.GetBuiltinResource<Mesh>("Capsule.fbx");
+        CosmeticItem capsule = new CosmeticItem("Capsule", mesh, 1000);
+        purchasedCosmeticList.Add(capsule); //COMMENT THIS OUT ONCE SELECTION WORKS FOR SURE
+        allCosmeticList.Add(capsule);
+
+        mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
+        CosmeticItem sphere = new CosmeticItem("Sphere", mesh, 1000);
+        purchasedCosmeticList.Add(sphere); //COMMENT THIS OUT ONCE SELECTION WORKS FOR SURE
+        allCosmeticList.Add(sphere);
     }
 }
