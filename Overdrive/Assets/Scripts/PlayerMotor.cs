@@ -62,7 +62,7 @@ public class PlayerMotor : MonoBehaviour
     //Obstacle detection
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.point.z > transform.position.z + controller.radius) //the point of z-axis of player passes z-axis of something
+        if(hit.point.z > transform.position.z + controller.radius && transform.position.z > 0) //the point of z-axis of player passes z-axis of something
         {
             Time.timeScale = 0; //pauses the time
             Death();
