@@ -32,7 +32,7 @@ public class PlayerProfile : MonoBehaviour
             avgOdCoinsEarned = (int) (totalOdCoinsEarned / totalStagesPlayed);
 
         } catch {
-             print("No PlayerPrepfs: PlayerProfile");
+             print("No PlayerPrefs: PlayerProfile");
         }
 
         availableOdCoinsText.text = "Available OD Coins: " + availableOdCoins;

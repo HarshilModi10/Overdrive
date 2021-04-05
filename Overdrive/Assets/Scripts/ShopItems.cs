@@ -19,24 +19,51 @@ public class ShopItems : MonoBehaviour
     }
 
     public static List<CosmeticItem> getPurchasedCosmetics(){
-        //try{
-            return purchasedCosmeticList;
-        //}catch{
-        //    return (this.purchasedCosmeticList.);
-        //}
-        
+        return purchasedCosmeticList;
     }
 
-    public List<CosmeticItem> getAllCosmetics(){
+    public static List<CosmeticItem> getAllCosmetics(){
         return allCosmeticList;
+    }
+
+    public static void purchaseCosmetic(CosmeticItem cosmetic) {
+        purchasedCosmeticList.Add(cosmetic);
     }
 
     public static void setUp()
     {
         purchasedCosmeticList = new List<CosmeticItem>();
+        allCosmeticList = new List<CosmeticItem>();
+
+        //default, already purchased
         Mesh mesh = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
-        CosmeticItem test = new CosmeticItem("item1", mesh, 1000);
-        purchasedCosmeticList.Add(test);
-        print("TEST");
+        CosmeticItem cube = new CosmeticItem("Cube", mesh, 0);
+        purchasedCosmeticList.Add(cube);
+        allCosmeticList.Add(cube);
+        PlayerPrefs.SetInt("CubePurchased", 1);
+
+        mesh = Resources.GetBuiltinResource<Mesh>("Capsule.fbx");
+        CosmeticItem capsule = new CosmeticItem("Capsule", mesh, 10);  //CHANGE TO REAL PRICE ONCE SHOP AND COINS FUNCTIONAL
+        //purchasedCosmeticList.Add(capsule); //COMMENT THIS OUT ONCE SELECTION WORKS FOR SURE
+        allCosmeticList.Add(capsule);
+        try {
+            if (PlayerPrefs.GetInt("CapsulePurchased") == 1) {
+                purchasedCosmeticList.Add(capsule);
+            }
+        } catch {
+            PlayerPrefs.SetInt("CapsulePurchased", 0);
+        }
+
+        mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
+        CosmeticItem sphere = new CosmeticItem("Sphere", mesh, 5); //CHANGE TO REAL PRICE ONCE SHOP AND COINS FUNCTIONAL
+        //purchasedCosmeticList.Add(sphere); //COMMENT THIS OUT ONCE SELECTION WORKS FOR SURE
+        allCosmeticList.Add(sphere);
+        try {
+            if (PlayerPrefs.GetInt("SpherePurchased") == 1) {
+                purchasedCosmeticList.Add(sphere);
+            }
+        } catch {
+            PlayerPrefs.SetInt("SpherePurchased", 0);
+        }
     }
 }

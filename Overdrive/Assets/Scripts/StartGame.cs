@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static ShopItems;
+using static CosmeticItem;
 public class StartGame : MonoBehaviour
 {
 
     public Dropdown cosmeticItemDropdown;
-    //private List<CosmeticItem> purchasedCosmeticList;
+    private List<CosmeticItem> purchasedCosmeticList;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,18 +17,14 @@ public class StartGame : MonoBehaviour
         {
             ShopItems.setUp();
         }
-        try
-        {
-            int cosmeticItem_1 = PlayerPrefs.GetInt("cosmeticItem-1");
-        } catch {
-            PlayerPrefs.SetInt("cosmeticItem-1", 1);
-            int cosmeticItem_1 = PlayerPrefs.GetInt("cosmeticItem-1");
+        purchasedCosmeticList = ShopItems.getPurchasedCosmetics();
+        
+        List<string> options = new List<string>();
+        for (int i = 0; i < purchasedCosmeticList.Count; i++) {
+            options.Add(purchasedCosmeticList[i].getName());
         }
-        //SceneManager.LoadSceneAsync("Shop");
-        //GameObject ShopObj = GameObject.FindGameObjectWithTag("Shop");
-        //print(ShopObj.GetComponent<ShopItems>().getPurchasedCosmetics());
-        print(ShopItems.getPurchasedCosmetics());
-        //print(this.purchasedCosmeticList.indexOf(0));
+        cosmeticItemDropdown.ClearOptions();
+        cosmeticItemDropdown.AddOptions(options);
     }
 
     // Update is called once per frame
@@ -39,8 +36,7 @@ public class StartGame : MonoBehaviour
      public void ToStage1()
     {
         int cosmeticItem = cosmeticItemDropdown.value;
-        print(cosmeticItem);
-        PlayerPrefs.SetInt("selectedCosmetic", cosmeticItem);
+        PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
         SceneManager.LoadScene("Game");//load Game scene
     }
     public void ToMenu()

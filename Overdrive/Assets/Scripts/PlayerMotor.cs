@@ -12,7 +12,9 @@ public class PlayerMotor : MonoBehaviour
 
     private bool isDead = false;
 
-    private Mesh character;
+    private Mesh characterMesh;
+
+    private static CosmeticItem character;
 
     public GameObject player;
 
@@ -23,10 +25,9 @@ public class PlayerMotor : MonoBehaviour
         Time.timeScale = 1; //unpauses the time
         startTime = Time.time;
 
-        if (PlayerPrefs.GetInt("selectedCosmetic") == 0){
-            character = Resources.GetBuiltinResource<Mesh>("Cube.fbx");
-            player.GetComponent<MeshFilter>().mesh = character;
-        }
+        //set character model based on selection
+        characterMesh = Resources.GetBuiltinResource<Mesh>(character.getName() + ".fbx");
+        player.GetComponent<MeshFilter>().mesh = characterMesh;
     }
 
     // Update is called once per frame
@@ -61,7 +62,7 @@ public class PlayerMotor : MonoBehaviour
     //Obstacle detection
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.point.z > transform.position.z + controller.radius) //the point of z-axis of player passes z-axis of something
+        if(hit.point.z > transform.position.z + controller.radius && transform.position.z > 0) //the point of z-axis of player passes z-axis of something
         {
             Time.timeScale = 0; //pauses the time
             Death();
@@ -71,8 +72,11 @@ public class PlayerMotor : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("test death");
         isDead = true;
         GetComponent<Score>().OnDeath();
+    }
+
+    public static void setPlayerCosmetic(CosmeticItem cosmetic) {
+        character = cosmetic;
     }
 }
