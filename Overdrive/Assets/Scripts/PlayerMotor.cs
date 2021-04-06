@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMotor : MonoBehaviour
 {
     private CharacterController controller;
@@ -17,6 +17,10 @@ public class PlayerMotor : MonoBehaviour
     private static CosmeticItem character;
 
     public GameObject player;
+    
+    public PauseMenu pause;
+
+    private bool isPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,8 @@ public class PlayerMotor : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Time.timeScale = 1; //unpauses the time
         startTime = Time.time;
+
+        isPaused = false;
 
         //set character model based on selection
         characterMesh = Resources.GetBuiltinResource<Mesh>(character.getName() + ".fbx");
@@ -79,4 +85,14 @@ public class PlayerMotor : MonoBehaviour
     public static void setPlayerCosmetic(CosmeticItem cosmetic) {
         character = cosmetic;
     }
+
+    public void pauseGame(){
+        isPaused = true;
+        GetComponent<PauseMenu>().pause();
+    }
+    public void resumeGame(){
+        isPaused = false;
+        GetComponent<PauseMenu>().resume();
+    }
+
 }
