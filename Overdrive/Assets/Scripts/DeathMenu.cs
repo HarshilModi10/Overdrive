@@ -33,6 +33,27 @@ public class DeathMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void Restart2()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
+        SceneManager.LoadScene("Game2");//Loads scene over again 
+        gameObject.SetActive(false);
+    }
+
+    public void Restart3()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
+        SceneManager.LoadScene("Game3");//Loads scene over again 
+        gameObject.SetActive(false);
+    }
+
+    public void Restart4()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
+        SceneManager.LoadScene("Game4");//Loads scene over again 
+        gameObject.SetActive(false);
+    }
+
     public void ToMenu()
     {
         SceneManager.LoadScene("Menu");

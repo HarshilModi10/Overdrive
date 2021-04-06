@@ -39,6 +39,28 @@ public class StartGame : MonoBehaviour
         PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
         SceneManager.LoadScene("Game");//load Game scene
     }
+
+    public void ToStage2()
+    {
+        int cosmeticItem = cosmeticItemDropdown.value;
+        PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
+        SceneManager.LoadScene("Game2");//load Game scene
+    }
+
+    public void ToStage3()
+    {
+        int cosmeticItem = cosmeticItemDropdown.value;
+        PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
+        SceneManager.LoadScene("Game3");//load Game scene
+    }
+
+    public void ToStage4()
+    {
+        int cosmeticItem = cosmeticItemDropdown.value;
+        PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
+        SceneManager.LoadScene("Game4");//load Game scene
+    }
+
     public void ToMenu()
     {
         SceneManager.LoadScene("Menu");//load Game scene
