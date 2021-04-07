@@ -18,6 +18,10 @@ public class PlayerMotor : MonoBehaviour
 
     public GameObject player;
 
+    public PauseMenu pause;
+
+    private bool isPaused;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,7 @@ public class PlayerMotor : MonoBehaviour
         Time.timeScale = 1; //unpauses the time
         startTime = Time.time;
 
+        isPaused = false;
         //set character model based on selection
         characterMesh = Resources.GetBuiltinResource<Mesh>(character.getName() + ".fbx");
         player.GetComponent<MeshFilter>().mesh = characterMesh;
@@ -79,4 +84,14 @@ public class PlayerMotor : MonoBehaviour
     public static void setPlayerCosmetic(CosmeticItem cosmetic) {
         character = cosmetic;
     }
+
+    public void pauseGame(){
+        isPaused = true;
+        GetComponent<PauseMenu>().pause();
+    }
+    public void resumeGame(){
+        isPaused = false;
+        GetComponent<PauseMenu>().resume();
+    }
+
 }
