@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static HelpMenuInformation;
+using UnityEngine.UI;
 
 public class Help : MonoBehaviour
+
 {
-    // Start is called before the first frame update
+    public Text gameInstructionsText;
+    public Text gameControlsText;
+
     void Start()
     {
+        gameInstructionsText.text = "Game Instruction: " + HelpMenuInformation.getGameInstructions();
+        gameControlsText.text = "Game Controls: " + HelpMenuInformation.getGameControls();
         
     }
 
