@@ -65,4 +65,5 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");//load Game scene
     }
+    
 }

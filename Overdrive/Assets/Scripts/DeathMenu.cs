@@ -19,6 +19,7 @@ public class DeathMenu : MonoBehaviour
     //{
         
     //}
+    
 
     public void ToggleEndMenu(float score)
     {
