@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32596624, g: 0.5495401, b: 0.5983962, a: 1}
+  m_IndirectSpecularColor: {r: 0.3259668, g: 0.54954123, b: 0.5983975, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -533,7 +533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 281470261}
         m_TargetAssemblyTypeName: DeathMenu, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: ToStartGameMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1325,7 +1325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY AGAIN
+  m_Text: START NEW GAME
 --- !u!222 &1028739438
 CanvasRenderer:
   m_ObjectHideFlags: 0

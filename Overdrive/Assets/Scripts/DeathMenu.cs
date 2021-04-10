@@ -27,32 +27,8 @@ public class DeathMenu : MonoBehaviour
         scoreText.text = ((int)score).ToString();//displays score
     }
 
-    public void Restart()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
-        SceneManager.LoadScene("Game");//Loads scene over again 
-        gameObject.SetActive(false);
-    }
-
-    public void Restart2()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
-        SceneManager.LoadScene("Game2");//Loads scene over again 
-        gameObject.SetActive(false);
-    }
-
-    public void Restart3()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
-        SceneManager.LoadScene("Game3");//Loads scene over again 
-        gameObject.SetActive(false);
-    }
-
-    public void Restart4()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//Loads scene over again 
-        SceneManager.LoadScene("Game4");//Loads scene over again 
-        gameObject.SetActive(false);
+    public void ToStartGameMenu() {
+        SceneManager.LoadScene("StartGame");
     }
 
     public void ToMenu()

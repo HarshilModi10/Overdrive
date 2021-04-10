@@ -22,6 +22,7 @@ public class PlayerMotor : MonoBehaviour
 
     private bool isPaused;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,21 @@ public class PlayerMotor : MonoBehaviour
         isPaused = false;
         //set character model based on selection
         characterMesh = Resources.GetBuiltinResource<Mesh>(character.getName() + ".fbx");
+        // resize if necessary
+        if (character.getName() == "Capsule") {
+            //characterMesh.transform.localScale -= 0.5;
+            Vector3 newScale = transform.localScale;
+            newScale *= 0.5f;
+            transform.localScale = newScale;
+            controller.radius *= 0.5f;
+        } else if (character.getName() == "Sphere") {
+            Vector3 newScale = transform.localScale;
+            newScale *= 0.5f;
+            transform.localScale = newScale;
+            controller.radius *= 0.5f;
+        }
+        characterMesh.RecalculateNormals();
+        characterMesh.RecalculateBounds();
         player.GetComponent<MeshFilter>().mesh = characterMesh;
     }
 
@@ -66,8 +82,12 @@ public class PlayerMotor : MonoBehaviour
 
     //Obstacle detection
     private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if(hit.point.z > transform.position.z + controller.radius && transform.position.z > 0) //the point of z-axis of player passes z-axis of something
+    {   
+        float scaleFactor = 1.0f;
+        if (character.getName() != "Cube") {
+            scaleFactor = 0.5f;
+        }
+        if(hit.point.z > transform.position.z*scaleFactor + controller.radius && transform.position.z > 0) //the point of z-axis of player passes z-axis of something
         {
             Time.timeScale = 0; //pauses the time
             Death();
