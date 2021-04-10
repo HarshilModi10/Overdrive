@@ -15,7 +15,6 @@ public class PlayerProfile : MonoBehaviour
     void Start()
     {
 
-
         availableOdCoinsText.text = "Available OD Coins: " + PlayerProfileData.getAvailableOdCoins();
         avgOdCoinsEarnedText.text = "Average OD Coins Earned Per Game : " + calculateAverageCoinsEarned();
         avgStageDurationText.text = "Average Duration Per Game: " + calculateAverageStageDuration();

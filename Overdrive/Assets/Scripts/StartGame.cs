@@ -63,3 +63,4 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("STAGE_" + scenes[selectedStage]);
     }
 }
+

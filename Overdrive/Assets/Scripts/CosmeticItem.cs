@@ -13,6 +13,7 @@ public class CosmeticItem{
         this.characterModel = characterModel;
         this.price = price;
     }
+    
 
     public string getName(){
         return this.name;

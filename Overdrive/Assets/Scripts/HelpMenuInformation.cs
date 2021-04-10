@@ -14,6 +14,7 @@ public class HelpMenuInformation : MonoBehaviour
         return gameInstuctions;
     }
 
+
     public static string getGameControls(){
         return gameControls;
     }

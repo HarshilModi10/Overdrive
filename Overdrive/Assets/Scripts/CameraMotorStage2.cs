@@ -14,6 +14,7 @@ public class CameraMotorStage2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         lookAt = GameObject.FindGameObjectWithTag("Player").transform;
         startOffset = transform.position - lookAt.position;
     }

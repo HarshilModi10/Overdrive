@@ -67,4 +67,5 @@ public class ShopItems : MonoBehaviour
             PlayerPrefs.SetInt("SpherePurchased", 0);
         }
     }
+    
 }

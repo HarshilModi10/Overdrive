@@ -9,7 +9,6 @@ public class PlayerProfileData : MonoBehaviour
 {
 
 
-
     // Start is called before the first frame update
 	public static int getAvailableOdCoins(){
 		try{

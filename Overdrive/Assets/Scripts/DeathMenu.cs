@@ -15,6 +15,7 @@ public class DeathMenu : MonoBehaviour
         gameObject.SetActive(false); //doesnt display death menu when first launching the game
     }
 
+
     // Update is called once per frame
     //void Update()
     //{
