@@ -10,7 +10,10 @@ public class StartGame : MonoBehaviour
 {
 
     public Dropdown cosmeticItemDropdown;
+    public Dropdown stageDropdown;
     private List<CosmeticItem> purchasedCosmeticList;
+    private List<string> scenes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,20 @@ public class StartGame : MonoBehaviour
         }
         cosmeticItemDropdown.ClearOptions();
         cosmeticItemDropdown.AddOptions(options);
+
+        //populate stage information
+        int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;     
+        scenes = new  List<string>();
+        for( int i = 0; i < sceneCount; i++ )
+        {   
+            string sceneTitle = System.IO.Path.GetFileNameWithoutExtension( UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex( i ) );
+            if (sceneTitle.Length >= 6 && sceneTitle.Substring(0, 6) == "STAGE_") {
+                scenes.Add(sceneTitle.Substring(6));
+            }
+        }
+
+        stageDropdown.ClearOptions();
+        stageDropdown.AddOptions(scenes);
     }
 
     // Update is called once per frame
@@ -65,5 +82,12 @@ public class StartGame : MonoBehaviour
     public void ToMenu()
     {
         SceneManager.LoadScene("Menu");//load Game scene
+    }
+
+    public void ToGame() {
+        int selectedStage = stageDropdown.value;
+        int cosmeticItem = cosmeticItemDropdown.value;
+        PlayerMotor.setPlayerCosmetic(purchasedCosmeticList[cosmeticItem]);
+        SceneManager.LoadScene("STAGE_" + scenes[selectedStage]);
     }
 }

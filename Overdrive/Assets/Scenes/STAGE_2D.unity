@@ -442,7 +442,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 281470261}
         m_TargetAssemblyTypeName: DeathMenu, Assembly-CSharp
-        m_MethodName: Restart4
+        m_MethodName: ToStartGameMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1016978227}
+  pause: {fileID: 0}
 --- !u!23 &1016978229
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -886,7 +887,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY AGAIN
+  m_Text: START NEW GAME
 --- !u!222 &1028739438
 CanvasRenderer:
   m_ObjectHideFlags: 0

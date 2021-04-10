@@ -55,6 +55,10 @@ public class DeathMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void ToStartGameMenu() {
+        SceneManager.LoadScene("StartGame");
+    }
+
     public void ToMenu()
     {
         SceneManager.LoadScene("Menu");
