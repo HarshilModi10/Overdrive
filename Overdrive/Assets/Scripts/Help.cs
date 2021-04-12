@@ -27,6 +27,8 @@ public class Help : MonoBehaviour
 
     public void ToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");//load Main Menu scene
     }
+
+
 }
