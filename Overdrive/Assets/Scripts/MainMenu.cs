@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using static Shop;
+using static CosmeticItem;
 public class MainMenu : MonoBehaviour
 {
     
@@ -36,6 +37,17 @@ public class MainMenu : MonoBehaviour
     public void ToHelp()
     {
         SceneManager.LoadScene("Help");//load Help scene
+    }
+
+    public static List<CosmeticItem> getPurchasedCosmetics(){
+        if (ShopItems.getPurchasedCosmetics() == null)
+        {
+            ShopItems.setUp();
+        }
+
+        List<CosmeticItem> purchasedCosmeticList = ShopItems.getPurchasedCosmetics();
+
+        return purchasedCosmeticList;
     }
 
 }

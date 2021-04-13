@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static ShopItems;
+
+using static MainMenu;
 using static CosmeticItem;
+
 public class StartGame : MonoBehaviour
 {
 
@@ -17,11 +19,8 @@ public class StartGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ShopItems.getPurchasedCosmetics() == null)
-        {
-            ShopItems.setUp();
-        }
-        purchasedCosmeticList = ShopItems.getPurchasedCosmetics();
+        
+        purchasedCosmeticList = MainMenu.getPurchasedCosmetics();
         
         List<string> options = new List<string>();
         for (int i = 0; i < purchasedCosmeticList.Count; i++) {
